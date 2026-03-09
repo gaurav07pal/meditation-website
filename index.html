@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relief | Free Meditation & Sleep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="media-overlay"></div>
+    <video id="bg-video" autoplay loop muted playsinline></video>
+    <img id="bg-image" src="" alt="Background">
+
+    <nav>
+        <div class="logo">Relief.</div>
+        <ul class="nav-links">
+            <li><span id="streak-display" class="streak-badge" style="cursor: default;">🔥 0 Days</span></li>
+            <li><a href="#library">Audio Library</a></li>
+            <li><a href="#breathe">Breathwork</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="hero-section">
+        <div class="hero-content">
+            <h1>Peace is a human right.</h1>
+            <p>Experience premium guided meditations, sleep soundscapes, and breathwork without the premium price tag.</p>
+            <a href="#library" class="btn">Begin Your Journey</a>
+        </div>
+    </header>
+
+    <section class="library" id="library">
+        <div class="section-header">
+            <h2>The Relief Library</h2>
+            <p>Select a track below to start listening.</p>
+        </div>
+        
+        <div class="player-card">
+            <div class="now-playing">
+                <span class="label">Now Playing:</span>
+                <div class="title-row">
+                    <span id="track-title">Select a track...</span>
+                    <button id="fav-btn" class="icon-btn" onclick="toggleFavorite()" style="display:none;">🤍</button>
+                </div>
+            </div>
+            
+            <canvas id="visualizer" width="400" height="60"></canvas>
+            
+            <audio id="main-audio" crossorigin="anonymous" src=""></audio>
+            
+            <div class="progress-container">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress-bar" value="0" min="0" max="100" step="1">
+                <span id="duration">0:00</span>
+            </div>
+
+            <div class="player-controls">
+                <button id="play-pause-btn" class="control-btn" onclick="togglePlay()">Play</button>
+                <button id="next-btn" class="control-btn outline" onclick="playNext()">Next</button>
+                <button id="loop-btn" class="control-btn outline" onclick="toggleLoop()">Loop: Off</button>
+                <button id="fullscreen-btn" class="control-btn outline" onclick="toggleFullScreen()">Full Screen Media</button>
+                
+                <select id="sleep-timer" class="control-select">
+                    <option value="0">Sleep Timer: Off</option>
+                    <option value="5">5 Minutes</option>
+                    <option value="15">15 Minutes</option>
+                    <option value="30">30 Minutes</option>
+                </select>
+            </div>
+
+            <div class="volume-container">
+                <span class="volume-icon">🔉</span>
+                <input type="range" id="volume-slider" value="100" min="0" max="100">
+            </div>
+
+            <ul class="playlist" id="playlist-container"></ul>
+        </div>
+    </section>
+
+    <section class="breathing-container" id="breathe">
+        <h2>Breathwork</h2>
+        
+        <select id="breath-mode" class="control-select breath-select" onchange="changeBreathMode()">
+            <option value="box">Box Breathing (4-4-4-4)</option>
+            <option value="relax">Relaxing Sleep (4-7-8)</option>
+        </select>
+        
+        <p id="breath-desc">Inhale (4s) • Hold (4s) • Exhale (4s) • Hold (4s)</p>
+        
+        <div class="circle" id="breath-circle">
+            <div id="breath-text">Ready</div>
+            <div id="breath-timer" style="font-size: 2.5rem; font-weight: 600; margin-top: 10px;"></div>
+        </div>
+        <button class="btn btn-outline" id="breath-btn" onclick="toggleBreathing()">Start Exercise</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
